@@ -178,8 +178,10 @@ def pyobfsproxy():
         # they can initialize and setup themselves. Exit if the
         # provided arguments were corrupted.
 
-        # XXX use exceptions
-        if (args.validation_function(args) == False):
+        try:
+            args.validation_function(args)
+        except ValueError, err:
+            log.error(err)
             sys.exit(1)
 
         do_external_mode(args)
