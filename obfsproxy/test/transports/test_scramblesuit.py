@@ -436,14 +436,14 @@ class PacketMorpher( unittest.TestCase ):
 
         def checkDistribution( dist ):
             pm = packetmorpher.new(dist)
-            for i in xrange(0, const.MTU + 2):
+            for i in range(0, const.MTU + 2):
                 padLen = pm.calcPadding(i)
                 self.assertTrue(const.HDR_LENGTH <= \
                                 padLen < \
                                 (const.MTU + const.HDR_LENGTH))
 
         # Test randomly generated distributions.
-        for i in xrange(0, 100):
+        for i in range(0, 100):
             checkDistribution(None)
 
         # Test border-case distributions.
@@ -458,7 +458,7 @@ class PacketMorpher( unittest.TestCase ):
         sendCrypter.setSessionKey("A" * 32,  "A" * 8)
         sendHMAC = "A" * 32
 
-        for i in xrange(0, const.MTU + 2):
+        for i in range(0, const.MTU + 2):
             padLen = len(pm.getPadding(sendCrypter, sendHMAC, i))
             self.assertTrue(const.HDR_LENGTH <= padLen < const.MTU + \
                             const.HDR_LENGTH)

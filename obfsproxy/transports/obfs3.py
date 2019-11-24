@@ -50,7 +50,7 @@ class Obfs3Transport(base.BaseTransport):
         # Bytes of padding scanned so far.
         self.scanned_padding = 0
         # Last padding bytes scanned.
-        self.last_padding_chunk = ''
+        self.last_padding_chunk = b''
 
         # Magic value that the other party is going to send
         # (initialized after deriving shared secret)
@@ -62,7 +62,7 @@ class Obfs3Transport(base.BaseTransport):
 
         # Buffer for the first data, Tor is trying to send but can't right now
         # because we have to handle the DH handshake first.
-        self.queued_data = ''
+        self.queued_data = b''
 
         # Attributes below are filled by classes that inherit Obfs3Transport.
         self.send_keytype = None
@@ -178,7 +178,7 @@ class Obfs3Transport(base.BaseTransport):
         padding_length = random.randint(0, MAX_PADDING/2)
         magic = hmac_sha256.hmac_sha256_digest(self.shared_secret, self.send_magic_const)
         message = rand.random_bytes(padding_length) + magic + self.send_crypto.crypt(self.queued_data)
-        self.queued_data = ''
+        self.queued_data = b''
 
         log.debug("%s: Transmitting %d bytes (with magic)." % (log_prefix, len(message)))
         self.circuit.downstream.write(message)

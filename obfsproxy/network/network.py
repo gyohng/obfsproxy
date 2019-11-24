@@ -139,7 +139,7 @@ class Circuit(Protocol):
         # (We use callLater because we want to return back to the
         # event loop so that any messages we send in circuitConnected get sent
         # to the network immediately.)
-        reactor.callLater(0.01, conn_to_flush.dataReceived, '')
+        reactor.callLater(0.01, conn_to_flush.dataReceived, b'')
 
     def dataReceived(self, data, conn):
         """

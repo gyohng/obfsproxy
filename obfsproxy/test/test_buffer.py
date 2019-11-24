@@ -14,7 +14,7 @@ class testBuffer(twisted.trial.unittest.TestCase):
 
     def test_byte_by_byte(self):
         """Read one byte at a time."""
-        for i in xrange(len(self.test_string)):
+        for i in range(len(self.test_string)):
             self.assertEqual(self.buf.read(1), self.test_string[i])
 
     def test_bigread(self):
@@ -28,13 +28,13 @@ class testBuffer(twisted.trial.unittest.TestCase):
     def test_drain(self):
         tmp = self.buf.drain(-1) # drain everything
         self.assertIsNone(tmp) # check non-existent retval
-        self.assertEqual(self.buf.read(-1), '') # it should be empty.
+        self.assertEqual(self.buf.read(-1), b'') # it should be empty.
         self.assertEqual(len(self.buf), 0)
 
     def test_drain2(self):
         tmp = self.buf.drain(len(self.test_string)-1) # drain everything but a byte
         self.assertIsNone(tmp) # check non-existent retval
-        self.assertEqual(self.buf.peek(-1), '.') # peek at last character
+        self.assertEqual(self.buf.peek(-1), b'.') # peek at last character
         self.assertEqual(len(self.buf), 1) # length must be 1
 
 

@@ -326,7 +326,7 @@ class ExtORPortProtocol(network.GenericProtocol):
 
         Throws CouldNotWriteExtCommand
         """
-        payload = ''
+        payload = b''
 
         if len(body) > 65535: # XXX split instead of quitting?
             log.warning("Obfsproxy was asked to send Extended ORPort command with more than "

@@ -193,7 +193,7 @@ class UniformDH( object ):
 
         # Authenticate the handshake including the current approximate epoch.
         mac = mycrypto.HMAC_SHA256_128(self.sharedSecret,
-                                       publicKey + padding + mark + epoch)
+                                       publicKey + padding + mark + epoch.encode('utf-8'))
 
         if self.weAreServer and (srvState is not None):
             log.debug("Adding the HMAC authenticating the server's UniformDH "

@@ -64,7 +64,7 @@ class ScrambleSuitTransport( base.BaseTransport ):
         self.protoState = const.ST_WAIT_FOR_AUTH
 
         # Buffer for outgoing data.
-        self.sendBuf = ""
+        self.sendBuf = b""
 
         # Buffer for inter-arrival time obfuscation.
         self.choppingBuf = fifobuf.Buffer()
