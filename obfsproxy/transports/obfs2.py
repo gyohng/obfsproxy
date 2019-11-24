@@ -129,7 +129,7 @@ class Obfs2Transport(base.BaseTransport):
 
         try:
             super(Obfs2Transport, cls).validate_external_mode_cli(args)
-        except ValueError, err:
+        except ValueError as err:
             log.error(err)
             sys.exit(1)
 

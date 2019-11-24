@@ -180,7 +180,7 @@ def pyobfsproxy():
 
         try:
             args.validation_function(args)
-        except ValueError, err:
+        except ValueError as err:
             log.error(err)
             sys.exit(1)
 
