@@ -85,7 +85,7 @@ PUBLIC_KEY_LENGTH = 192
 PRNG_SEED_LENGTH = 32
 
 # File which holds the server's state information.
-SERVER_STATE_FILE = "server_state.cpickle"
+SERVER_STATE_FILE = "server_state.pickle"
 
 # Life time of session tickets in seconds.
 SESSION_TICKET_LIFETIME = KEY_ROTATION_TIME

@@ -7,7 +7,7 @@ distributions.  Random samples can then be drawn from these distributions.
 
 import random
 
-import const
+from . import const
 
 import obfsproxy.common.log as logging
 

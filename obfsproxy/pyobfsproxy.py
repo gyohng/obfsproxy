@@ -201,7 +201,7 @@ def run():
 
     try:
         pyobfsproxy()
-    except Exception, e:
+    except Exception as e:
         log.exception(e)
         raise
 

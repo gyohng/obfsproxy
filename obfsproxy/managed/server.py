@@ -24,7 +24,7 @@ def do_managed_server():
     ptserver = ServerTransportPlugin()
     try:
         ptserver.init(transports.transports.keys())
-    except EnvError, err:
+    except EnvError as err:
         log.warning("Server managed-proxy protocol failed (%s)." % err)
         return
 
@@ -55,7 +55,7 @@ def do_managed_server():
         transport_class = transports.get_transport_class(transport, 'server')
         try:
             transport_class.setup(pt_config)
-        except base.TransportSetupFailed, err:
+        except base.TransportSetupFailed as err:
             log.warning("Transport '%s' failed during setup()." % transport)
             ptserver.reportMethodError(transport, "setup() failed: %s." % (err))
             continue
@@ -78,7 +78,7 @@ def do_managed_server():
             log.warning("Could not find transport '%s'" % transport)
             ptserver.reportMethodError(transport, "Could not find transport.")
             continue
-        except error.CannotListenError, e:
+        except error.CannotListenError as e:
             error_msg = "Could not set up listener (%s:%s) for '%s' (%s)." % \
                         (e.interface, e.port, transport, e.socketError[1])
             log.warning(error_msg)

@@ -9,7 +9,7 @@ dictionary.
 
 import time
 
-import const
+from . import const
 
 import obfsproxy.common.log as logging
 

@@ -130,7 +130,7 @@ class OBFSSOCKSv5Protocol(socks5.SOCKSv5Protocol, network.GenericProtocol):
         # dict.
         try:
             split_args = _split_socks_args(args)
-        except csvError, err:
+        except csvError as err:
             log.warning("split_socks_args failed (%s)" % str(err))
             return False
 
